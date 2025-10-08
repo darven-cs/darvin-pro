@@ -1,7 +1,7 @@
-package com.darven.model.mapper;
+package com.darven.domain.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.darven.model.dos.ChatDO;
+import com.darven.domain.dos.ChatDO;
 
 /**
  * @author: Darven

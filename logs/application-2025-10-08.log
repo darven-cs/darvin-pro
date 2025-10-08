@@ -114,3 +114,5 @@ java.lang.ArithmeticException: / by zero
 2025-10-08 16:05:37.268 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
 2025-10-08 16:05:37.276 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
 2025-10-08 16:05:37.283 [main] INFO  com.darven.DarvinProApplication - Started DarvinProApplication in 2.292 seconds (process running for 3.058)
+2025-10-08 16:39:45.266 [SpringApplicationShutdownHook] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-08 16:39:45.288 [tomcat-shutdown] INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete

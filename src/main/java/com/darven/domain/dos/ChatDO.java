@@ -1,4 +1,4 @@
-package com.darven.model.dos;
+package com.darven.domain.dos;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

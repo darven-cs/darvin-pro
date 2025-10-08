@@ -9,6 +9,6 @@ import org.springframework.context.annotation.Configuration;
  * @description: TODO
  */
 @Configuration
-@MapperScan("com.darven.model.mapper")
+@MapperScan("com.darven.domain.mapper")
 public class MybatisPlusConfig {
 }
