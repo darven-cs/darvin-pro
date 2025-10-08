@@ -2,12 +2,15 @@ package com.darven.controller;
 
 import com.darven.advisor.CustomChatMemoryAdvisor;
 import com.darven.advisor.CustomStreamLoggerAndMessage2DBAdvisor;
+import com.darven.advisor.NetworkSearchAdvisor;
 import com.darven.aspect.ApiOperationLog;
 import com.darven.domain.mapper.ChatMessageMapper;
 import com.darven.domain.vo.AIResponse;
 import com.darven.domain.vo.AiChatReqVO;
 import com.darven.domain.vo.NewChatReqVO;
 import com.darven.service.ChatService;
+import com.darven.service.SearXNGService;
+import com.darven.service.SearchResultContentFetcherService;
 import com.darven.utils.Response;
 import com.google.common.collect.Lists;
 import jakarta.annotation.Resource;
@@ -46,6 +49,10 @@ public class ChatController {
     private ChatMessageMapper chatMessageMapper;
     @Resource
     private TransactionTemplate transactionTemplate;
+    @Resource
+    private SearXNGService searXNGService;
+    @Resource
+    private SearchResultContentFetcherService searchResultContentFetcherService;
 
     @Value("${spring.ai.openai.base-url}")
     private String baseUrl;
@@ -71,6 +78,8 @@ public class ChatController {
         String modelName = aiChatReqVO.getModelName();
         // 温度值
         Double temperature = aiChatReqVO.getTemperature();
+        // 联网搜索
+        Boolean networkSearch = aiChatReqVO.getNetworkSearch();
 
         // 构建 ChatModel
         ChatModel chatModel = OpenAiChatModel.builder()
@@ -91,6 +100,9 @@ public class ChatController {
 
         // Advisor 集合
         List<Advisor> advisors = Lists.newArrayList();
+        if (networkSearch){
+            advisors.add(new NetworkSearchAdvisor(searXNGService,searchResultContentFetcherService));
+        }
         // 添加自定义记忆体 Advisor
         advisors.add(new CustomChatMemoryAdvisor(chatMessageMapper,aiChatReqVO,50));
         // 自定义日志和数据入库 Advisor
