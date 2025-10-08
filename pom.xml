@@ -31,6 +31,8 @@
         <mybatis-plus.version>3.5.12</mybatis-plus.version>
         <!--p6spy拦截记录工具，生产慎用-->
         <p6spy.version>3.9.1</p6spy.version>
+        <!-- 相关工具类 -->
+        <guava.version>33.0.0-jre</guava.version>
     </properties>
 
     <dependencyManagement>
@@ -131,6 +133,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- 相关工具类 -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
     </dependencies>
 
